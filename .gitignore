@@ -1,0 +1,6 @@
+data_*
+.project
+.pydevproject
+host.conf
+.DS_Store
+
