@@ -1,4 +1,4 @@
-FROM dockerops/dockerops-base-ubuntu14.04
+FROM reyns/reyns-base-ubuntu14.04
 MAINTAINER Stefano Alberto Russo <stefano.russo@gmail.com>
 
 #------------------------

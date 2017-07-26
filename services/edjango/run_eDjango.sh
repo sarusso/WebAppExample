@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Load DockerOps env
+# Load Reyns env
 source /env.sh
 
 # Move in the correct dir

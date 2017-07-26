@@ -1,4 +1,4 @@
-FROM dockerops/dockerops-base-ubuntu14.04
+FROM reyns/reyns-base-ubuntu14.04
 MAINTAINER Stefano Alberto Russo <stefano.russo@gmail.com>
 
 #------------------------
@@ -47,7 +47,7 @@ RUN pip install -r /opt/eDjango_sample_app/sample_app/requirements.txt
 RUN ln -s /opt/eDjango_sample_app/sample_app /opt/eDjango_sample_app/eDjango/edjango/sample_app
 
 # Fix permissions
-RUN chown -R dockerops:dockerops /opt/eDjango_sample_app
+RUN chown -R reyns:reyns /opt/eDjango_sample_app
 
 
 #------------------------
