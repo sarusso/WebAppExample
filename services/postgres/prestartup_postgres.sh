@@ -64,7 +64,7 @@ if [ ! -f /data/postgres/configured_flag ]; then
     # Wait for postgres to become ready
     # Should be improved
     sleep 5
-    874r73
+
     echo 'Creating eDjango user/db...'
     su postgres -c "psql -f /create_eDjango_user.sql"
 
