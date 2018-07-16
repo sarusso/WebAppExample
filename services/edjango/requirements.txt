@@ -1,9 +1,0 @@
-# These requirements are used for caching purpose, the requirements defined in the project win over them
-Django==1.8.4
-Fabric==1.10.2
-pycrypto==2.6.1
-django-cors-headers==0.13
-django-rest-auth==0.3.0
-djangorestframework==2.4.3
-requests==2.4.3
-pytz==2016.6.1

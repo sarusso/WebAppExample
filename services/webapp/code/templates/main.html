@@ -1,0 +1,55 @@
+{% load static %} 
+{% include "header.html" %}
+{% include "navigation.html" with main_path='/main/' %}
+
+    <!-- Header -->
+    <header id="top" class="header">
+        <div class="text-vertical-center">
+            <h1 style="color:white">Welcome to your eDjango + Reyns<br> powered Web App</h1>
+            <br><br>
+            <a href="#features" class="btn btn-blue btn-lg">Find Out More</a>
+            <br><br>
+        </div>
+    </header>
+
+    <!-- About -->
+    <section id="features" class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center" >
+                    <br/ >
+                    <h2>Avoid to write the same stuff over and over again</h2>
+                    <br />
+                    <br />
+                    <p class="lead" style="max-width:900px;  margin: 0 auto;" align="left">
+Just clone/download the repo, and run setup.sh, build.sh and run.sh.
+<br/><br/>
+
+The structure for "your_project_app" is then almost the same as an usual (entire) Django project - except that in this case is completely decoupled from Django itself.
+<br/><br/>
+
+It has to include the standard models.py, settings.py, urls.py and views.py files, as well as the static and templates folders.
+<br/><br/>
+
+That's it, eDjango implements automatic App disovery so you don't have to do anything else.
+
+
+                    </p>
+                <br /><br /><br />
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+
+
+{% include "footer.html" %}
+
+
+
+
+
+
+
