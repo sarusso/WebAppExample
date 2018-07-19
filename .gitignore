@@ -64,7 +64,7 @@ services/webapp/db_conf.sh
 #---------------
 # Reyns
 #---------------
-Reyns
+.Reyns
 data_*
 host.conf
 
