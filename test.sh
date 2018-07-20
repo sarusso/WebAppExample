@@ -10,9 +10,9 @@ if [ ! -d ./services ]; then
 fi
 
 if [[ $# -eq 0 ]] ; then
-    ./shell.sh webapp,command="cd /opt/webapp/eDjango && fab install && fab test"
+    reyens/shell webapp,command="cd /opt/webapp/eDjango && fab install && fab test"
 else
-    echo "No args accepted for this command"
+    echo "No args accepted for this script"
     exit 1
 fi
 

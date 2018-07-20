@@ -1,0 +1,67 @@
+#!/bin/bash
+set -e
+
+#===================================#
+#  Reyns project setup script v0.1  #
+#===================================#
+
+# Get current folder name
+FOLDER=${PWD##*/}
+
+echo ""
+
+# Check we are in the right place
+if [ ! -d ./services ]; then
+    echo "You must run this script from the project's root folder."
+    exit 1
+fi
+
+# Check requirements
+for REQUIREMENT in git python docker; do
+	if hash $REQUIREMENT 2>/dev/null; then
+	    echo "[OK] \"$REQUIREMENT\" found"
+	else
+	    echo "[ERROR] \"$REQUIREMENT\" is missing" 
+	    exit 1
+	fi
+done 
+
+# Check Reyns first clone
+if [ ! -d .Reyns ]; then
+    echo "[INFO] Installing \"reyns\"..."
+    git clone $REYNS_REPO .Reyns
+    cd .Reyns
+    git checkout $REYNS_COMMIT_HASH
+    echo "[OK] \"reyns\" installed"
+    cd ..
+else
+    echo "[OK] \"reyns\" found"
+fi
+
+# Call Reyns setup script
+.Reyns/scripts/setup_in_project.sh
+
+
+#=========================#
+# Local setup commands    #
+#=========================#
+
+# Use dev certificates
+if [ ! -d services/proxy/certificates ]; then
+    echo "Using dev certificates."
+    cp -a services/proxy/certificates-dev services/proxy/certificates
+else
+    echo "Not using dev certificates as certificates are already present."
+fi
+
+# Use dev (local) Postgres database
+if [ ! -f services/webapp/db_conf.sh ]; then
+    echo "Using dev database settings."
+    cp services/webapp/db_conf-dev.sh  services/webapp/db_conf.sh
+else
+    echo "Not using dev database settings as settings are already present."
+fi
+
+exit 0
+
+
