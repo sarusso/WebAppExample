@@ -54,7 +54,7 @@ Update cycle:
     reyns clean/all
     reyns run/all
 
-Daemon (moniotrs for git changes every minute and applies the update clyce)
+Daemon (monitors for git changes every minute and applies the update cycle)
 
     reyns/daemon
 
