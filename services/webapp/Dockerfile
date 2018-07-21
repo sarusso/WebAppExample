@@ -5,10 +5,10 @@ MAINTAINER Stefano Alberto Russo <stefano.russo@gmail.com>
 # Apt requirements
 #------------------------------
 
+# Update
 RUN apt-get update
-#RUN apt-get install -y python-dev libffi-dev libssl-dev
 
-# Install curl
+# Install Curl
 RUN apt-get install curl -y
 
 # Install decent version of pip
@@ -51,7 +51,7 @@ RUN chown -R reyns:reyns /opt/webapp
 RUN mkdir /var/log/webapp/ && chown reyns:reyns /var/log/webapp/
 
 #------------------------------
-# Install Python requirements
+# Python requirements
 #------------------------------
 
 # Remove six
@@ -66,7 +66,7 @@ RUN pip install -r /tmp/requirements.txt
 
 
 #------------------------------
-# Supervisord
+# Prestartup
 #------------------------------
 
 COPY run_webapp.sh /etc/supervisor/conf.d/

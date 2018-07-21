@@ -40,7 +40,7 @@ More commands
 
 Develop (use instead of the "run all", codebase changes becomes live)
 
-    # reyns/run all,conf=develop
+    # reyns/run all,conf=devel
 
 Test
 
