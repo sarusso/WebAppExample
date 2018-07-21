@@ -67,6 +67,8 @@ services/webapp/db_conf.sh
 .Reyns
 data_*
 host.conf
+reyns/*
+!reyns/setup
 
 # Daemon
 .update_in_progress_flag
