@@ -12,8 +12,8 @@ from edjango.common.views import login_view_template, logout_view_template, regi
 from edjango.common.exceptions import ErrorMessage
 
 # WebApp imports
-from models import Profile
-from common import timezonize
+from .models import Profile
+from .common import timezonize
 
 # Setup logging
 import logging
@@ -63,10 +63,12 @@ def register(request, template='register.html'):
 @public_view
 def main(request, template='main.html'):
 
+    import sys
 
     data={}
     data['user'] = request.user
     data['title'] = None #"Home"
+    data['version'] = sys.version_info
     
     return data
 

@@ -22,6 +22,9 @@ export EDJANGO_EMAIL_APIKEY=""
 export EDJANGO_PROJECT_NAME="WebApp"
 export EDJANGO_PUBLIC_HTTP_HOST="https://localhost"
 
+# To Python3
+export EDJANGO_PYTHON=python3
+
 # Init
 cd /opt/webapp/eDjango/ && fab makemigrations &>> /var/log/webapp/makemigrations.log
 cd /opt/webapp/eDjango/ && fab install:noinput=True &>> /var/log/webapp/install.log

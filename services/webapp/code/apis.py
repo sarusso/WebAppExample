@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 
 from django.contrib.auth import authenticate
-from models import SampleObject
+from .models import SampleObject
 
 
 #-------------------------
@@ -106,7 +106,7 @@ class privateAPI(APIView):
                 # Call API logic 
                 return self._post(request)
                       
-        except Exception,e:
+        except Exception as e:
             logger.error(format_exception(e, debug=False))
             return error500(error_msg='Got exception in processing request: ' + str(e))
 
@@ -148,7 +148,7 @@ class privateAPI(APIView):
                 # Call API logic 
                 return self._get(request)
                       
-        except Exception,e:
+        except Exception as e:
             logger.error(format_exception(e, debug=False))
             return error500(error_msg='Got exception in processing request: ' + str(e))
 

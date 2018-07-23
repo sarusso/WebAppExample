@@ -43,7 +43,7 @@ def timezonize(timezone):
         try:
             test = datetime.datetime(2015,1,1,0,0, tzinfo=pytz.UTC)
             test.astimezone(timezone)
-        except Exception, e:
+        except Exception as e:
             raise ValueError("timezone or "+str(e))
     
     return timezone

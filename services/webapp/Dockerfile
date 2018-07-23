@@ -11,13 +11,27 @@ RUN apt-get update
 # Install Curl
 RUN apt-get install curl -y
 
-# Install decent version of pip
+# Install get-pip script
 RUN curl -O https://bootstrap.pypa.io/get-pip.py
-RUN python get-pip.py 'pip==10.0.1'
-RUN rm get-pip.py
 
-# Docker
-RUN apt-get install docker.io -y
+# Install Python3 and Pip3 (python3-distutils required for pip3)
+RUN apt-get install python3 python3-distutils -y 
+
+# Install Python and pip in this order (first Python 3 and then Python 2), or 
+# you will end ap with python defaulting to python2 and pip defaulting to pip3
+# Otherwise, do somethign like "ln -s /usr/local/bin/pip3 /usr/local/bin/pip"
+
+# Install Python3 and Pip3 (ython3-distutils required for pip3)
+RUN apt-get install python3 python3-distutils -y 
+RUN python3 get-pip.py 'pip==10.0.1'
+
+# Install Python2 and Pip2
+RUN apt-get install python -y
+RUN python get-pip.py 'pip==10.0.1'
+
+# Python 3 dev (for pycrypto)
+RUN apt-get install python3-dev -y
+
 
 #------------------------------
 # Install eDjango
@@ -28,7 +42,7 @@ RUN mkdir /opt/webapp
 
 # Install eDjango
 RUN cd /opt/webapp && git clone https://github.com/sarusso/eDjango.git 
-RUN cd /opt/webapp/eDjango && git pull && git checkout d9fb752bbcdd42d7d68a9d63b3cb51058457a7a3
+RUN cd /opt/webapp/eDjango && git pull && git checkout c00494e7067fa481be0e23436fce713e0bd58728
 
 
 #------------------------------
@@ -59,10 +73,12 @@ RUN apt-get remove python-six -y
 
 # Install eDJango requirements..
 RUN cd /opt/webapp && pip install -r eDjango/requirements.txt
+RUN cd /opt/webapp && pip3 install -r eDjango/requirements.txt
 
 # Install App requirements
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install -r /tmp/requirements.txt
+RUN pip3 install -r /tmp/requirements.txt
 
 
 #------------------------------
@@ -95,11 +111,6 @@ COPY prestartup_webapp.sh /prestartup/
 
 # Disable SSH
 RUN rm /etc/supervisor/conf.d/supervisord_sshd.conf
-
-
-
-
-
 
 
 
