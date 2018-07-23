@@ -11,12 +11,12 @@ if [ ! -d "/data/postgres/9.3" ]; then
     echo "Data dir does not exist"
     # Setup /data/postgres
     mkdir -p /data/postgres
-    chown reyns:reyns  /data/postgres
+    chown postgres:postgres  /data/postgres
     chmod 700 /data/postgres
 
     # Setup /data/postgres/9.3
     mkdir -p /data/postgres/9.3
-    chown reyns:reyns /data/postgres/9.3
+    chown postgres:postgres /data/postgres/9.3
     chmod 700 /data/postgres/9.3
 
     # Copy files
@@ -28,12 +28,12 @@ if [ ! -d "/data/postgres/9.3" ]; then
     # Move conf
     mv /etc/postgresql/9.3/main/pg_hba.conf /data/postgres
     ln -s /data/postgres/pg_hba.conf /etc/postgresql/9.3/main/pg_hba.conf
-    chown reyns:reyns /data/postgres/pg_hba.conf
+    chown postgres:postgres /data/postgres/pg_hba.conf
 
     # Move conf
     mv /etc/postgresql/9.3/main/postgresql.conf /data/postgres
     ln -s /data/postgres/postgresql.conf /etc/postgresql/9.3/main/postgresql.conf
-    chown reyns:reyns /data/postgres/postgresql.conf
+    chown postgres:postgres /data/postgres/postgresql.conf
 
 else
     echo "Data dir does exist"
@@ -42,19 +42,13 @@ else
 
     mv /etc/postgresql/9.3/main/pg_hba.conf /etc/postgresql/9.3/main/pg_hba.conf_or
     ln -s /data/postgres/pg_hba.conf /etc/postgresql/9.3/main/pg_hba.conf
-    chown reyns:reyns /data/postgres/pg_hba.conf
+    chown postgres:postgres /data/postgres/pg_hba.conf
 
     mv /etc/postgresql/9.3/main/postgresql.conf /etc/postgresql/9.3/main/postgresql.conf_or
     ln -s /data/postgres/postgresql.conf /etc/postgresql/9.3/main/postgresql.conf
-    chown reyns:reyns /data/postgres/postgresql.conf
+    chown postgres:postgres /data/postgres/postgresql.conf
 
 fi
-
-
-# Fix ownerships if needed
-chown -R reyns:reyns /data/postgres/9.3/main
-chown -R reyns:reyns /var/run/postgresql
-chown -R reyns:reyns /data/postgres/
 
 
 # Configure Postgres (create user etc.)

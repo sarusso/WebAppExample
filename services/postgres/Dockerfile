@@ -18,7 +18,7 @@ COPY pg_hba.conf /etc/postgresql/9.3/main/pg_hba.conf
 COPY postgresql.conf /etc/postgresql/9.3/main/postgresql.conf
 
 # Chown conf
-RUN chown -R reyns:reyns /etc/postgresql
+RUN chown -R postgres:postgres /etc/postgresql
 
 # Create pythings user/db script
 COPY create_webapp_user.sql /
@@ -41,7 +41,3 @@ COPY supervisord_postgres.conf /etc/supervisor/conf.d/
 
 # Disable SSH
 RUN rm /etc/supervisor/conf.d/supervisord_sshd.conf
-
-# Fix couple of ownerships
-RUN chown -R reyns:reyns /var/lib/postgresql/ && chown -R reyns:reyns /etc/postgresql && chown -R reyns:reyns /var/run/postgresql/
-
