@@ -20,7 +20,7 @@ COPY postgresql.conf /etc/postgresql/9.3/main/postgresql.conf
 # Chown conf
 RUN chown -R postgres:postgres /etc/postgresql
 
-# Create pythings user/db script
+# Create user/db script
 COPY create_webapp_user.sql /
 RUN chown postgres:postgres /create_webapp_user.sql
 
