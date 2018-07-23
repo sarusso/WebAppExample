@@ -4,8 +4,8 @@
 An example about how to build a Web App with eDjango and Reyns in minutes.
 
 
-Quickstart
-----------
+## Quickstart
+
 
 Requirements:
     
@@ -13,16 +13,16 @@ Requirements:
 
 Setup
 
-	# reyns/setup
+	$ reyns/setup
 
 Build
 
-    # reyns/build all
+    $ reyns/build all
 
 
 Run
 
-	# reyns/run all
+	$ reyns/run all
 
 Play
 
@@ -31,32 +31,31 @@ Play
 
 Clean
 
-	# reyns/clean all
+	$ reyns/clean all
 
 
 
-More commands
-----------
+## More commands
 
 Develop (use instead of the "run all", codebase changes becomes live)
 
-    # reyns/run all,conf=devel
+    $ reyns/run all,conf=devel
 
 Test
 
-	# /test.sh
+	$ /test.sh
 
 Update cycle:
 
-    git pull
-    reyns/setup
-    reyns/build all
-    reyns clean/all
-    reyns run/all
+    $ git pull
+    $ reyns/setup
+    $ reyns/build all
+    $ reyns clean/all
+    $ reyns run/all
 
 Daemon (monitors for git changes every minute and applies the update cycle)
 
-    reyns/daemon
+    $ reyns/daemon
 
 
 
