@@ -21,7 +21,7 @@ class Command(BaseCommand):
             first_time = True
             
             # Create test user
-            print 'Creating test user with mail={}'.format(email) 
+            print('Creating test user with mail={}'.format(email))
             testuser = User.objects.create_user(username, password=password, email=email)
             Profile.objects.create(user=testuser)
             testuser.save()
