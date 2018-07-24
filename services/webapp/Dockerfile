@@ -1,17 +1,19 @@
 FROM reyns/reyns-base-ubuntu18.04
 MAINTAINER Stefano Alberto Russo <stefano.russo@gmail.com>
 
+# Always start with an apt-get update when extending Reyns images,
+# otherwise apt repositories might get outdated (404 not found)
+# and building without cache does not re-build Reyns services.
+RUN apt-get update
+
 #------------------------------
 # Apt requirements
 #------------------------------
 
-# Update
-RUN apt-get update
-
 # Install Curl
 RUN apt-get install curl -y
 
-# Install get-pip script
+# Download get-pip script
 RUN curl -O https://bootstrap.pypa.io/get-pip.py
 
 # Install Python3 and Pip3 (python3-distutils required for pip3)
@@ -63,6 +65,7 @@ RUN chown -R reyns:reyns /opt/webapp
 
 # Prepare for logs
 RUN mkdir /var/log/webapp/ && chown reyns:reyns /var/log/webapp/
+
 
 #------------------------------
 # Python requirements
