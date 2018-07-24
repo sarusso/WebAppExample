@@ -13,7 +13,7 @@ class Command(BaseCommand):
         
         if User.objects.filter(email=email).exists():
             
-            print "Django user for testuser alredy exists, skipping..."
+            print('Django user for testuser alredy exists, skipping...')
 
         else:
             
