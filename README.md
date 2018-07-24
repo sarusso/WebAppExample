@@ -1,4 +1,4 @@
-# eDjango-Reyns Example WebApp
+# Example Web App using eDjango and Reyns 
 
 
 An example about how to build a Web App with eDjango and Reyns in minutes.
