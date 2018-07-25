@@ -1,6 +1,11 @@
 FROM reyns/reyns-base-ubuntu18.04
 MAINTAINER Stefano Alberto Russo <stefano.russo@gmail.com>
 
+# Always start with an apt-get update when extending Reyns images,
+# otherwise apt repositories might get outdated (404 not found)
+# and building without cache does not re-build Reyns services.
+RUN apt-get update
+
 #------------------------
 # Install Postgres 9.3
 #------------------------

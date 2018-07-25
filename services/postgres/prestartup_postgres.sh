@@ -50,13 +50,27 @@ else
 
 fi
 
+# Check correct permissions. Incorrect permissions might occur when changing base images,
+# as the user "postgres" might get mapped to a differend uid / guid.
+PERMISSIONS=$(ls -alh /data/postgres/9.3 | grep main | awk '{print $3 ":" $4}')
+if [[ "x$PERMISSIONS" == "xpostgres:postgres" ]] ; then
+    # Everything ok
+    :
+else
+    # Fix permissions
+    chown -R postgres:postgres /data/postgres/9.3 
+    chown -R postgres:postgres /data/postgres/pg_hba.conf  
+    chown -R postgres:postgres /data/postgres/postgresql.conf
+    chown -R postgres:postgres /var/run/postgresql
+fi
+
 
 # Configure Postgres (create user etc.)
 if [ ! -f /data/postgres/configured_flag ]; then
     echo 'Configuring as /data/postgres/configured_flag is not found...'   
     echo "Running postgres server in standalone mode for configuring users..."
     # Run Postgres. Use > /dev/null or a file, otherwise Reyns prestarup scripts end detection will fail
-    DISABLE_FIREWALL=True /etc/supervisor/conf.d/run_postgres.sh &> /dev/null &
+    /etc/supervisor/conf.d/run_postgres.sh &> /dev/null &
 
     # Save PID
     PID=$!

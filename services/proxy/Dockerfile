@@ -1,8 +1,12 @@
 FROM reyns/reyns-base-ubuntu18.04
 MAINTAINER Stefano Alberto Russo <stefano.russo@gmail.com>
 
-# Install Apache
+# Always start with an apt-get update when extending Reyns images,
+# otherwise apt repositories might get outdated (404 not found)
+# and building without cache does not re-build Reyns services.
 RUN apt-get update
+
+# Install Apache
 RUN apt-get install -y apache2
 RUN apt-get install apache2-utils
 
