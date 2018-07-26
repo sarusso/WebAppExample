@@ -7,7 +7,7 @@ MAINTAINER Stefano Alberto Russo <stefano.russo@gmail.com>
 RUN apt-get update
 
 #------------------------
-# Install Postgres 9.3
+# Install Postgres 10
 #------------------------
 
 # Add repo
@@ -15,12 +15,12 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main" >> /etc
 RUN wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | sudo apt-key add -
 
 RUN apt-get update
-RUN apt-get install -y postgresql-9.3
+RUN apt-get install -y postgresql-10
 
 # Copy conf 
-RUN mv /etc/postgresql/9.3/main/pg_hba.conf /etc/postgresql/9.3/main/pg_hba.conf.or
-COPY pg_hba.conf /etc/postgresql/9.3/main/pg_hba.conf
-COPY postgresql.conf /etc/postgresql/9.3/main/postgresql.conf
+RUN mv /etc/postgresql/10/main/pg_hba.conf /etc/postgresql/10/main/pg_hba.conf.or
+COPY pg_hba.conf /etc/postgresql/10/main/pg_hba.conf
+COPY postgresql.conf /etc/postgresql/10/main/postgresql.conf
 
 # Chown conf
 RUN chown -R postgres:postgres /etc/postgresql
