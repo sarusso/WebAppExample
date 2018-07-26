@@ -1,6 +1,6 @@
 import json
 import logging
-from common import BaseAPITestCase
+from .common import BaseAPITestCase
 from django.contrib.auth.models import User
 from .. import apis
 from ..models import SampleObject
