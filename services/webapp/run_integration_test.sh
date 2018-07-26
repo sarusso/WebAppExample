@@ -10,8 +10,8 @@ source /opt/webapp/db_conf.sh
 #export PYTHONPATH=$PYTHONPATH:/opt/your_library
 
 # Set custom log Levels
-export DJANGO_LOG_LEVEL=INFO
-export EDJANGO_LOG_LEVEL=DEBUG
+export DJANGO_LOG_LEVEL=ERROR
+export EDJANGO_LOG_LEVEL=INFO
 
 # To Python3
 export EDJANGO_PYTHON=python3

@@ -7,7 +7,7 @@ source /env.sh
 #export PYTHONPATH=$PYTHONPATH:/opt/your_library
 
 # Set custom log Levels
-export DJANGO_LOG_LEVEL=INFO
+export DJANGO_LOG_LEVEL=ERROR
 export EDJANGO_LOG_LEVEL=DEBUG
 
 # To Python3
