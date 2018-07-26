@@ -37,13 +37,6 @@ Clean
 
 ## More commands
 
-Develop (use instead of the "run all", codebase changes becomes live)
-
-    $ reyns/run all,conf=devel
-
-Test
-
-	$ /test.sh
 
 Update cycle:
 
@@ -58,4 +51,32 @@ Daemon (monitors for git changes every minute and applies the update cycle)
     $ reyns/daemon
 
 
+## Development
+
+Django development server is running on port 8080 of the "haykle" service.
+
+To enable live code changes, run in development mode (which mounts the code from services/haykle/code as as a volume inside the haykle service container):
+
+    $ reyns/run all,conf=devel
+
+To run unit tests in a running "webapp" service:
+
+    $ ./unit_test.sh [apis|common|etc.]
+
+To run the integration tests (which builds and run the entire project): 
+
+	$ ./integration_test.sh
+
+When you edit the ORM model, you need to rerun the cloud to migrate the DB:
+
+    $ reyns/rerun cloud
+
+You can also enter the cloud service container and manually migrate:
+
+    $ reyns/shell cloud
+    $ source /env.sh
+    $ source /opt/haykle/db_conf.sh
+    $ cd /opt/haykle/eDjango
+    $ fab makemigrations
+    $ fab migrate   
 

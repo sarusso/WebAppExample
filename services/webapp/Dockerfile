@@ -112,8 +112,8 @@ COPY prestartup_webapp.sh /prestartup/
 # Security
 #------------------------------
 
-# Disable SSH
-RUN rm /etc/supervisor/conf.d/supervisord_sshd.conf
+# Disable SSH (will cause integration tests to fail if run without tty)
+#RUN rm /etc/supervisor/conf.d/supervisord_sshd.conf
 
 
 
