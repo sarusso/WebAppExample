@@ -17,12 +17,15 @@ if [[ "x$REYNS_PS_GREP_INSTANCE" == "x" ]] ; then
     exit 1
 fi
 
-# Run test
+# Do we have to run a specific test?
 TEST=""
 if [[ "x$1" != "x" ]] ; then
     TEST=".test_$1"
+    #/opt/webapp/run_unit_test.sh edjango.webapp_app.tests.test_apis
 fi 
-reyns/ssh webapp,command="/opt/webapp/run_unit_test.sh"
+
+# Run tests
+reyns/ssh webapp,command="/opt/webapp/run_unit_test.sh edjango.webapp_app.tests$TEST"
 TESTS_EXIT_CODE=$?
 
 if [[ "x$TESTS_EXIT_CODE" == "x0" ]] ; then

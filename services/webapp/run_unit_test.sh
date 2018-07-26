@@ -24,5 +24,5 @@ if [ -f /opt/webapp/eDjango/db-edjango.sqlite3 ]; then
 fi
 
 # Run the tests.
-cd /opt/webapp/eDjango/ && fab install && fab test
+cd /opt/webapp/eDjango/ && fab install && fab test $@
 rm /opt/webapp/eDjango/db-edjango.sqlite3
