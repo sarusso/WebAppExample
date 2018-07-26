@@ -22,7 +22,7 @@ TEST=""
 if [[ "x$1" != "x" ]] ; then
     TEST=".test_$1"
 fi 
-reyns/ssh webapp,command="cd /opt/webapp/eDjango && fab install && fab test"
+reyns/ssh webapp,command="/opt/webapp/run_unit_test.sh"
 TESTS_EXIT_CODE=$?
 
 if [[ "x$TESTS_EXIT_CODE" == "x0" ]] ; then

@@ -48,6 +48,23 @@ RUN cd /opt/webapp/eDjango && git pull && git checkout f1f3e9b0d19c32e933b4837cd
 
 
 #------------------------------
+# Python requirements
+#------------------------------
+
+# Remove six
+RUN apt-get remove python-six -y
+
+# Install eDJango requirements..
+RUN cd /opt/webapp && pip install -r eDjango/requirements.txt
+RUN cd /opt/webapp && pip3 install -r eDjango/requirements.txt
+
+# Install App requirements
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt
+RUN pip3 install -r /tmp/requirements.txt
+
+
+#------------------------------
 # Install App code
 #------------------------------
 
@@ -66,22 +83,10 @@ RUN chown -R reyns:reyns /opt/webapp
 # Prepare for logs
 RUN mkdir /var/log/webapp/ && chown reyns:reyns /var/log/webapp/
 
-
-#------------------------------
-# Python requirements
-#------------------------------
-
-# Remove six
-RUN apt-get remove python-six -y
-
-# Install eDJango requirements..
-RUN cd /opt/webapp && pip install -r eDjango/requirements.txt
-RUN cd /opt/webapp && pip3 install -r eDjango/requirements.txt
-
-# Install App requirements
-COPY requirements.txt /tmp/requirements.txt
-RUN pip install -r /tmp/requirements.txt
-RUN pip3 install -r /tmp/requirements.txt
+# Copy run tests script
+COPY run_unit_test.sh /opt/webapp/
+COPY run_integration_test.sh /opt/webapp/
+RUN chmod 755 /opt/webapp/run_unit_test.sh && chmod 755 /opt/webapp/run_integration_test.sh
 
 
 #------------------------------
@@ -114,7 +119,6 @@ COPY prestartup_webapp.sh /prestartup/
 
 # Disable SSH (will cause integration tests to fail if run without tty)
 #RUN rm /etc/supervisor/conf.d/supervisord_sshd.conf
-
 
 
 

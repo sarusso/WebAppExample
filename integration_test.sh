@@ -23,7 +23,7 @@ reyns/clean all,conf=test,force=True,strict=True
 reyns/run all,conf=test
 
 # Run tests
-reyns/ssh webapp,command="cd /opt/webapp/eDjango && source /opt/webapp/db_conf.sh && fab install && fab test"
+reyns/ssh webapp,command="/opt/webapp/run_integration_test.sh"
 
 TESTS_EXIT_CODE=$?
 
