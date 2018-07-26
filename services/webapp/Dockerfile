@@ -44,7 +44,7 @@ RUN mkdir /opt/webapp
 
 # Install eDjango
 RUN cd /opt/webapp && git clone https://github.com/sarusso/eDjango.git 
-RUN cd /opt/webapp/eDjango && git pull && git checkout f1f3e9b0d19c32e933b4837cd5c6d24d9ef39e02
+RUN cd /opt/webapp/eDjango && git pull && git checkout 576951f910ed869c958cabc4f9c7bd03d6d4888a
 
 
 #------------------------------
