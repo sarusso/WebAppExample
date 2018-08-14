@@ -22,9 +22,6 @@ reyns/build all
 reyns/clean all,conf=test,force=True,strict=True
 reyns/run all,conf=test
 
-# Let Django/eDjango create the migrations
-sleep 5
-
 # Run tests
 reyns/ssh webapp,command="/opt/webapp/run_integration_test.sh"
 
