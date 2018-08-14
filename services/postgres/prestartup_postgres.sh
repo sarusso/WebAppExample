@@ -52,15 +52,16 @@ fi
 
 # Check correct permissions. Incorrect permissions might occur when changing base images,
 # as the user "postgres" might get mapped to a differend uid / guid.
-PERMISSIONS=$(ls -alh /data/postgres/10 | grep main | awk '{print $3 ":" $4}')
+PERMISSIONS=$(ls -alh /data/postgres | grep main | awk '{print $3 ":" $4}')
 if [[ "x$PERMISSIONS" == "xpostgres:postgres" ]] ; then
     # Everything ok
     :
 else
     # Fix permissions
-    chown -R postgres:postgres /data/postgres/10 
-    chown -R postgres:postgres /data/postgres/pg_hba.conf  
-    chown -R postgres:postgres /data/postgres/postgresql.conf
+    chown -R postgres:postgres /data/postgres/
+    #chown -R postgres:postgres /data/postgres/10 
+    #chown -R postgres:postgres /data/postgres/pg_hba.conf  
+    #chown -R postgres:postgres /data/postgres/postgresql.conf
     chown -R postgres:postgres /var/run/postgresql
 fi
 
