@@ -59,13 +59,16 @@ To enable live code changes, run in development mode (which mounts the code from
 
     $ reyns/run all,conf=devel
 
+
 To run unit tests in a running "webapp" service:
 
     $ ./unit_test.sh [apis|common|etc.]
 
+
 To run the integration tests (which builds and run the entire project): 
 
 	$ ./integration_test.sh
+
 
 When you edit the ORM model, you need to rerun the cloud to migrate the DB:
 
@@ -79,4 +82,12 @@ You can also enter the cloud service container and manually migrate:
     $ cd /opt/haykle/eDjango
     $ fab makemigrations
     $ fab migrate   
+
+
+
+
+
+
+
+
 
