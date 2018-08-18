@@ -1,5 +1,5 @@
 # Sqlite conf
-#export DJANGO_DB_NAME="/data/webapp.sqlite3"
+#export DJANGO_DB_NAME="/data/web.sqlite3"
 
 # Postgres conf
 export DJANGO_DB_ENGINE="django.db.backends.postgresql_psycopg2"

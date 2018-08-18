@@ -85,6 +85,20 @@ You can also enter the cloud service container and manually migrate:
 
 
 
+# Database operations
+
+To dump & load data, for example to update the Postgres database version:
+
+    $ reyns/shell web
+    $ source /opt/web/db_conf.sh
+    $ cd /opt/web/eDjango
+    $ python manage.py dumpdata --indent=4 > /data/database.json
+    $ python manage.py dumpdata web_app --indent=4 > /data/database.json # Only web_app
+    $ python manage.py loaddata /data/database.json
+
+
+
+
 
 
 
