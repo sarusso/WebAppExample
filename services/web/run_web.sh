@@ -25,10 +25,13 @@ export EDJANGO_PUBLIC_HTTP_HOST="https://localhost"
 # To Python3
 export EDJANGO_PYTHON=python3
 
+# Set Python unbuffered or some error messages might not appear in logs
+export PYTHONUNBUFFERED=1
+
 # Init
-cd /opt/web/eDjango/ && fab makemigrations &>> /var/log/web/makemigrations.log
-cd /opt/web/eDjango/ && fab install:noinput=True &>> /var/log/web/install.log
-cd /opt/web/eDjango/ && fab populate &>> /var/log/web/populate.log
+cd /opt/web/eDjango/ && fab makemigrations &>> #/var/log/web/makemigrations.log
+cd /opt/web/eDjango/ && fab install:noinput=True #&>> /var/log/web/install.log
+cd /opt/web/eDjango/ && fab populate #&>> /var/log/web/populate.log
 
 # Run the development server
 exec fab runserver
