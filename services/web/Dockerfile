@@ -40,11 +40,11 @@ RUN apt-get install python3-dev -y
 #------------------------------
 
 # Prepare dir
-RUN mkdir /opt/webapp
+RUN mkdir /opt/web
 
 # Install eDjango
-RUN cd /opt/webapp && git clone https://github.com/sarusso/eDjango.git 
-RUN cd /opt/webapp/eDjango && git pull && git checkout d669055532bcd3fef5a1f1de9daca444dd8a68f1
+RUN cd /opt/web && git clone https://github.com/sarusso/eDjango.git 
+RUN cd /opt/web/eDjango && git pull && git checkout d669055532bcd3fef5a1f1de9daca444dd8a68f1
 
 
 #------------------------------
@@ -55,8 +55,8 @@ RUN cd /opt/webapp/eDjango && git pull && git checkout d669055532bcd3fef5a1f1de9
 RUN apt-get remove python-six -y
 
 # Install eDJango requirements..
-RUN cd /opt/webapp && pip install -r eDjango/requirements.txt
-RUN cd /opt/webapp && pip3 install -r eDjango/requirements.txt
+RUN cd /opt/web && pip install -r eDjango/requirements.txt
+RUN cd /opt/web && pip3 install -r eDjango/requirements.txt
 
 # Install App requirements
 COPY requirements.txt /tmp/requirements.txt
@@ -69,33 +69,33 @@ RUN pip3 install -r /tmp/requirements.txt
 #------------------------------
 
 # Add code
-COPY code /opt/webapp/webapp_app
+COPY code /opt/web/web_app
 
 # Inject the App in eDjango
-RUN ln -s /opt/webapp/webapp_app /opt/webapp/eDjango/edjango/webapp_app
+RUN ln -s /opt/web/web_app /opt/web/eDjango/edjango/web_app
 
 # Copy db conf
-COPY db_conf.sh /opt/webapp/db_conf.sh
+COPY db_conf.sh /opt/web/db_conf.sh
 
 # Fix permissions
-RUN chown -R reyns:reyns /opt/webapp
+RUN chown -R reyns:reyns /opt/web
 
 # Prepare for logs
-RUN mkdir /var/log/webapp/ && chown reyns:reyns /var/log/webapp/
+RUN mkdir /var/log/web/ && chown reyns:reyns /var/log/web/
 
 # Copy run tests script
-COPY run_unit_test.sh /opt/webapp/
-COPY run_integration_test.sh /opt/webapp/
-RUN chmod 755 /opt/webapp/run_unit_test.sh && chmod 755 /opt/webapp/run_integration_test.sh
+COPY run_unit_test.sh /opt/web/
+COPY run_integration_test.sh /opt/web/
+RUN chmod 755 /opt/web/run_unit_test.sh && chmod 755 /opt/web/run_integration_test.sh
 
 
 #------------------------------
 # Prestartup
 #------------------------------
 
-COPY run_webapp.sh /etc/supervisor/conf.d/
-RUN chmod 755 /etc/supervisor/conf.d/run_webapp.sh
-COPY supervisord_webapp.conf /etc/supervisor/conf.d/
+COPY run_web.sh /etc/supervisor/conf.d/
+RUN chmod 755 /etc/supervisor/conf.d/run_web.sh
+COPY supervisord_web.conf /etc/supervisor/conf.d/
 
 
 #------------------------------
@@ -103,7 +103,7 @@ COPY supervisord_webapp.conf /etc/supervisor/conf.d/
 #------------------------------
 
 # Copy, give right permissions & unique name to container prestartup
-COPY prestartup_webapp.sh /prestartup/
+COPY prestartup_web.sh /prestartup/
 
 
 #------------------------------

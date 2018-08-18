@@ -52,14 +52,14 @@ devel/eDjango
 devel/venv
 
 # Webapp service migrations
-services/webapp/code/migrations/*.py
-services/webapp/code/migrations/*.pyc
-!services/webapp/code/migrations/__init__.py
+services/web/code/migrations/*.py
+services/web/code/migrations/*.pyc
+!services/web/code/migrations/__init__.py
 
 
 # Keys and sensible (local) conf
 services/proxy/certificates/*
-services/webapp/db_conf.sh
+services/web/db_conf.sh
 
 #---------------
 # Reyns

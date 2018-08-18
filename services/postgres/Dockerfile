@@ -26,8 +26,8 @@ COPY postgresql.conf /etc/postgresql/10/main/postgresql.conf
 RUN chown -R postgres:postgres /etc/postgresql
 
 # Create user/db script
-COPY create_webapp_user.sql /
-RUN chown postgres:postgres /create_webapp_user.sql
+COPY create_web_user.sql /
+RUN chown postgres:postgres /create_web_user.sql
 
 # Prestartup
 COPY prestartup_postgres.sh /prestartup/

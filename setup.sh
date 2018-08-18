@@ -9,9 +9,9 @@ else
 fi
 
 # Use dev (local) Postgres database
-if [ ! -f services/webapp/db_conf.sh ]; then
+if [ ! -f services/web/db_conf.sh ]; then
     echo "Using dev database settings."
-    cp services/webapp/db_conf-dev.sh  services/webapp/db_conf.sh
+    cp services/web/db_conf-dev.sh  services/web/db_conf.sh
 else
     echo "Not using dev database settings as settings are already present."
 fi

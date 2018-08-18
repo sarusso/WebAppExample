@@ -9,10 +9,10 @@ if [ ! -d ./services ]; then
 fi
 
 # Check that we have a running instance where to run tests
-REYNS_PS_GREP_INSTANCE=$(reyns/ps | grep webapp)
+REYNS_PS_GREP_INSTANCE=$(reyns/ps | grep web)
 if [[ "x$REYNS_PS_GREP_INSTANCE" == "x" ]] ; then
     echo ""
-    echo "Error: webapp service is not running, cannot run tests."
+    echo "Error: web service is not running, cannot run tests."
     echo ""
     exit 1
 fi
@@ -21,11 +21,11 @@ fi
 TEST=""
 if [[ "x$1" != "x" ]] ; then
     TEST=".test_$1"
-    #/opt/webapp/run_unit_test.sh edjango.webapp_app.tests.test_apis
+    #/opt/web/run_unit_test.sh edjango.web_app.tests.test_apis
 fi 
 
 # Run tests
-reyns/ssh webapp,command="/opt/webapp/run_unit_test.sh edjango.webapp_app.tests$TEST"
+reyns/ssh web,command="/opt/web/run_unit_test.sh edjango.web_app.tests$TEST"
 TESTS_EXIT_CODE=$?
 
 if [[ "x$TESTS_EXIT_CODE" == "x0" ]] ; then

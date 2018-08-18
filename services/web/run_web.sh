@@ -6,7 +6,7 @@
 source /env.sh
 
 # Move in the correct dir
-cd /opt/webapp
+cd /opt/web
 
 # Database conf
 source db_conf.sh
@@ -26,9 +26,9 @@ export EDJANGO_PUBLIC_HTTP_HOST="https://localhost"
 export EDJANGO_PYTHON=python3
 
 # Init
-cd /opt/webapp/eDjango/ && fab makemigrations &>> /var/log/webapp/makemigrations.log
-cd /opt/webapp/eDjango/ && fab install:noinput=True &>> /var/log/webapp/install.log
-cd /opt/webapp/eDjango/ && fab populate &>> /var/log/webapp/populate.log
+cd /opt/web/eDjango/ && fab makemigrations &>> /var/log/web/makemigrations.log
+cd /opt/web/eDjango/ && fab install:noinput=True &>> /var/log/web/install.log
+cd /opt/web/eDjango/ && fab populate &>> /var/log/web/populate.log
 
 # Run the development server
 exec fab runserver

@@ -82,8 +82,8 @@ if [ ! -f /data/postgres/configured_flag ]; then
     sleep 5
 
     echo 'Creating user/db...'
-    # Execute sql commands for webapp user/db
-    su postgres -c "psql -f /create_webapp_user.sql"
+    # Execute sql commands for web user/db
+    su postgres -c "psql -f /create_web_user.sql"
 
     # Set configured flag
     touch /data/postgres/configured_flag
