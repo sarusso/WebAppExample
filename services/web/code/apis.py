@@ -183,8 +183,8 @@ class sampleobject_api(privateAPI):
         else:        
             return error400('Object with this name already present for this user')
         
-
-
+    def _get(self, request):
+        return error400('GET not implemented')
 
 
 
