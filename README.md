@@ -102,14 +102,14 @@ You can view the web service *server* log by using the following command:
 ### Migrations
 When you edit the ORM model (i.e. in models.py), you need to rerun the web service to migrate the DB:
 
-    $ reyns/rerun cloud
+    $ reyns/rerun web
 
 You can also enter the cloud service container and manually migrate:
 
-    $ reyns/shell cloud
+    $ reyns/shell web
     $ source /env.sh
-    $ source /opt/haykle/db_conf.sh
-    $ cd /opt/haykle/eDjango
+    $ source /opt/web/db_conf.sh
+    $ cd /opt/web/eDjango
     $ fab makemigrations
     $ fab migrate   
 
